@@ -6,13 +6,57 @@
         (click)="onlyOdd = !onlyOdd">Only show odd numbers</button>
       <br><br>
       <ul class="list-group">
-        <li
-          class="list-group-item">
-        </li>
+        <div *ngIf="onlyOdd"> 
+          <li
+            class="list-group-item"
+            [ngClass]="{odd: odd % 2 !== 0}"
+            [ngStyle]="{backgroundColor: odd % 2 !== 0 ? 'beige' : 'transparent'}"
+            *ngFor="let odd of oddNumbers"> {{ odd }}
+          </li>
+        </div>
+        <div *ngIf="!onlyOdd">
+          <li
+            class="list-group-item"
+            [ngClass]="{even: even % 2 == 0}"
+            [ngStyle]="{backgroundColor: evn % 2 !== 0 ? 'purple' : 'red'}"
+            *ngFor="let even of evenNumbers"> {{ even }}
+          </li>
+        </div>
       </ul>
-      <ng-template [ngIf]="onlyOdd">
-        <p>Only odd</p>
-      </ng-template>
+      <p appBasicHighlight> Styling you with basic directive </p>
+      <p appBetterHighlight [defaultColor]="'beige'" [highlightColor]="'grey'"> Styling you with better directive </p>  <!-- check again -->
     </div>
   </div>
 </div>
+
+<!-- project - button where we can toggle to only see odd numbers -->
+
+<!-- pipe - dynamically filter an array -->
+<!-- can't combine them on the same element. -->
+<!-- 1- toggle even odd list -->
+<!-- 2 - ng class ng style -->
+<!-- 3 - own directive -->
+
+<!-- new element, not a component,directive, hence the file name -->
+
+<!-- 4 - change bc of the element that has directive attched to it -->
+<!-- 4.1 get access to the element the directive sits on,
+
+get access to some other classes without having them to instantiate on our own
+ ask for specific type of arg - ang creates it -  injection -->
+
+<!-- 5 - use directive -->
+<!-- declare i in app module -->
+
+
+<!-- first basic attribute directive -->
+<!-- 6 - better approach to access element -->
+<!-- 7 - make styling interactive - on hover change color-->
+
+<!-- react to some events occurring on the element, the directive sits on. -->
+
+<!-- 8  bind to the same property using hostbinding, replace renderer -->
+
+<!-- 9 - dynamic value for hover color -  custom property bind -->
+<!-- 10 - without * and with * directive use -->
+<!-- wip -  structural directive -->
