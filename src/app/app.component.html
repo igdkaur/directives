@@ -5,7 +5,7 @@
         class="btn btn-primary"
         (click)="onlyOdd = !onlyOdd">Only show odd numbers</button>
       <br><br>
-      <ul class="list-group">
+      <!-- <ul class="list-group">
         <div *ngIf="onlyOdd"> 
           <li
             class="list-group-item"
@@ -22,9 +22,58 @@
             *ngFor="let even of evenNumbers"> {{ even }}
           </li>
         </div>
-      </ul>
+      </ul> -->
+
+      <!-- replace even part with directive without * -->
+       <!-- <ul class="list-group">
+        <div *ngIf="onlyOdd"> 
+          <li
+            class="list-group-item"
+            [ngClass]="{odd: odd % 2 !== 0}"
+            [ngStyle]="{backgroundColor: odd % 2 !== 0 ? 'beige' : 'transparent'}"
+            *ngFor="let odd of oddNumbers"> {{ odd }}
+          </li>
+        </div>
+        <ng-template [ngIf]="!onlyOdd">
+          <div >
+            <li
+              class="list-group-item"
+              [ngClass]="{even: even % 2 == 0}"
+              [ngStyle]="{backgroundColor: evn % 2 !== 0 ? 'purple' : 'red'}"
+              *ngFor="let even of evenNumbers"> {{ even }}
+            </li>
+          </div>
+        </ng-template>
+      </ul>  -->
+
+<!-- custom directive -->
+
+      <ul class="list-group">
+        <div *ngIf="onlyOdd"> 
+          <li
+            class="list-group-item"
+            [ngClass]="{odd: odd % 2 !== 0}"
+            [ngStyle]="{backgroundColor: odd % 2 !== 0 ? 'beige' : 'transparent'}"
+            *ngFor="let odd of oddNumbers"> {{ odd }}
+          </li>
+        </div>        
+      </ul> 
+      <div *appUnless="onlyOdd">
+        <li
+          class="list-group-item"
+          [ngClass]="{even: even % 2 == 0}"
+          [ngStyle]="{backgroundColor: evn % 2 !== 0 ? 'purple' : 'red'}"
+          *ngFor="let even of evenNumbers"> {{ even }}
+        </li>
+      </div>
       <p appBasicHighlight> Styling you with basic directive </p>
       <p appBetterHighlight [defaultColor]="'beige'" [highlightColor]="'grey'"> Styling you with better directive </p>  <!-- check again -->
+      <div [ngSwitch]="value">
+        <p *ngSwitchCase="5"> Value is 5</p>
+        <p *ngSwitchCase="10"> Value is 10</p>
+        <p *ngSwitchCase="100"> Value is 100</p>
+        <p *ngSwitchDefault> Value is Default</p>
+      </div>
     </div>
   </div>
 </div>
@@ -59,4 +108,5 @@ get access to some other classes without having them to instantiate on our own
 
 <!-- 9 - dynamic value for hover color -  custom property bind -->
 <!-- 10 - without * and with * directive use -->
-<!-- wip -  structural directive -->
+<!-- 11-  structural directive -->
+<!-- ng switch  -->
